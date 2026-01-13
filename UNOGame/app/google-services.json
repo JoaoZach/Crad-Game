@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "712669480260",
+    "project_id": "uno-game-5d408",
+    "storage_bucket": "uno-game-5d408.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712669480260:android:d51ff1c97614ee505d0311",
+        "android_client_info": {
+          "package_name": "com.example.unogame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtaLgUnhgo_qUWBJ2xRkYwuhP2xzESp1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
