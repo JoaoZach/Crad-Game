@@ -1,12 +1,12 @@
 # Crad-Game
 
-## 1. Introdução
+# Introdução
 Este projeto e um jogo de multiplayer UNO card game desenvolvido para Android usando Jetpack Composo.
 
-## Estrutura do Projeto
+# Estrutura do Projeto
 A estrutura do projeto segue o padrão MVVM (Model-View-ViewModel), garantindo sepração de responsabilidades e melhor manutenção do código.
 
-## Lista de Funcionalidades da Aplicação
+# Lista de Funcionalidades da Aplicação
 - Criação de jogos multijogador
 - Entrada em jogos existentes através de ID
 - Sincronização en tenpo real entre jogos
@@ -24,7 +24,7 @@ A estrutura do projeto segue o padrão MVVM (Model-View-ViewModel), garantindo s
 - Compra de cartas
 - Gestão da direção do jogo
 
-## Desenhos, Esquemas e Protótipos da Aplicação
+# Desenhos, Esquemas e Protótipos da Aplicação
 A interface foi desenvolvida com base numa abordagem simples e funcional:
 
 ## Ecrâ Principal
@@ -42,7 +42,7 @@ A interface foi desenvolvida com base numa abordagem simples e funcional:
 - Utilização de sprite sheet para a representar as cartas de UNO
 - Renderização com Canvas
 
-## Modelo de Dados
+# Modelo de Dados
 ## Card
 data class Card(
     val color: CardColor = CardColor.RED,
@@ -72,7 +72,7 @@ enum class CardColor {
     RED, BLUE, GREEN, YELLOW, WILD
 }
 
-## Implementação do Projeto
+# Implementação do Projeto
 A lógica do jogo está concentrada na classe GameViewModel.
 
 ## Gestão de Turnos
@@ -90,7 +90,7 @@ A lógica do jogo está concentrada na classe GameViewModel.
 - Todas as alterações de estado são enviadas para o Firestore
 - Os clientes escutam atualizações em tempo real
 
-## Tecnologias Usadas
+# Tecnologias Usadas
 - Kotolin
 - Jetpack Compose
 - FireBase FireStore
@@ -98,13 +98,13 @@ A lógica do jogo está concentrada na classe GameViewModel.
 - StateFlow
 - Android Studio
 
-## Dificuldades encontradas
+# Dificuldades encontradas
 - Gestão do deck de cartas de forma consistente
 - Sincronização de estado em tempo real sem conflitos
 - Garantir que ações como comprar cartas e jogar cartas fossem atómaticas
 - Criação de salas em que cria ids para os utilizadores poderem entrar
 
-## Conclusões
+# Conclusões
 O desenvolvimento deste projeto permitiu aplicar conhecimentos práticos de desenvolvimento Android morderno, bem com conceitos de arquitetura, gestão de estado e jogos multijogador.
 
 Apesar das dificuldades encontradas, foi possivel criar um jogo funcional e extensivel, respetiando as regras principas de UNO. O projeto pode ser facilmente melhorado com novas funcionalidades, como deteção de vitoria, animações ou modos de jogo adicionais.
