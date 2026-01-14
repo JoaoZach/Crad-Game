@@ -1,15 +1,53 @@
 # Crad-Game
 
 # Introdução
-Este projeto e um jogo de multiplayer UNO card game desenvolvido para Android usando Jetpack Composo.
+Este projeto consite no desnvolvimento de um jogo UNO multijogador, para Android, utilizando Jetpack Compose, FireBase e a arquitetura MVVM.
+A aplicação permite o registro e autenticação de utilizadores, criação e entrada em jogos, e a execução completa do jogo UNO em tempo real.
 
 # Estrutura do Projeto
-A estrutura do projeto segue o padrão MVVM (Model-View-ViewModel), garantindo sepração de responsabilidades e melhor manutenção do código.
+A estrutura do codigo foi organizada de forma modular para facilitar a manutenção e a escalabilidade:
+
+com.example.unogame
+│
+├── models
+│   ├── Card
+│   ├── CardColor
+│   ├── CardValue
+│   ├── Game
+│   └── User
+│
+├── navigation
+│   ├── NavGraph
+│   └── Screen
+│
+├── repositories
+│   ├── AuthRepository
+│   └── GameRepository
+│
+├── ui.theme
+│   └── game
+│       ├── CardItem
+│       ├── GameScreen
+│       ├── GameViewModel
+│       └── UnoDeck
+│
+├── login
+│   ├── LoginScreen
+│   └── LoginViewModel
+│
+├── register
+│   ├── RegisterScreen
+│   └── RegisterViewModel
+│
+└── MainActivity
 
 # Lista de Funcionalidades da Aplicação
-- Criação de jogos multijogador
-- Entrada em jogos existentes através de ID
-- Sincronização en tenpo real entre jogos
+- Registo de utilizadores
+- Login com email e palavra-passe
+- Navegação entre ecrãs
+- Criação de novos jogos
+- Entrada em jogos existentes através de Game ID
+- Jogo UNO multijogador em tempo real
 - Distribuição automática de cartas
 - Controlo de turnos
 - Implementação das regras principais de UNO:
@@ -22,25 +60,21 @@ A estrutura do projeto segue o padrão MVVM (Model-View-ViewModel), garantindo s
 - Escolha de cor ao jogar cartas Wild
 - Indicador visual da cor escolhida
 - Compra de cartas
-- Gestão da direção do jogo
+- Sincronização em tempo real entre jogadores
 
 # Desenhos, Esquemas e Protótipos da Aplicação
-A interface foi desenvolvida com base numa abordagem simples e funcional:
+Aaplicação segue um fluxo simples e intuitivo:
 
-## Ecrâ Principal
-- Botões para cirar ou entrar no jogo
-- Campo de texto
+## Fluxo da Aplicação
+- Ecrâ de Login / registo
+- Ecrâ de criação ou entrada em jogo
+- Ecrâ principal do jogo UNO
 
-## Ecrã de Jogo
-- Lista de jogadores
-- Indicação do jogador da vez
-- Cartas na messa
-- Mão do jogador da vez
-- Botão para comprar carta
-
-## Cartas
-- Utilização de sprite sheet para a representar as cartas de UNO
-- Renderização com Canvas
+## Interface do jogo
+- Cartas representadas graficamente através de sprite sheet
+- Mão do jogador apresentada em lista horizontal
+- Cartas na mesa visicéis a todos os jogadores
+- Diálgo para esoclha de cor em cartas Wild
 
 # Modelo de Dados
 ## Card
@@ -50,6 +84,7 @@ data class Card(
 )
 
 ## Game
+```
 data class Game(
     val gameId : String = "",
     val players : List<String> = emptyList(),
@@ -60,35 +95,46 @@ data class Game(
     val deck: List<Card> = emptyList(),
     val started : Boolean = false
 )
-
+```
 ## CardValue
+```
 enum class CardValue {
     ZERO, ONE, TWO, THREE, FOUR, FIVE , SIX, SEVEN, EIGHT, NINE,
     SKIP, REVERSE, DRAW_TWO, WILD, WILD_DRAW_FOUR
 }
-
+```
 ## CardColor
+```
 enum class CardColor {
     RED, BLUE, GREEN, YELLOW, WILD
 }
-
+```
+## User
+```
+data class User (
+    var uId : String? = null,
+    var name : String? = null,
+    var email : String? = null,
+)
+````
 # Implementação do Projeto
-A lógica do jogo está concentrada na classe GameViewModel.
+A aplicação segue o padrão MVVM (ModelView-ViewModel):
+- Model: Representa os dados (Game, Card, User)
+- View: Interfaces criadas com Jectpack Compose
+- ViewModel: Contém a lógica do jogo e gere o estado
 
-## Gestão de Turnos
-- Controlada através do índice currentTurn
-- A direção do jogo é definida por direction (1 ou -1)
-- O próximo jogador é calculado com operações modulares
+## Autenticação
+- Firebase Autehntication
+- Gerida através do AuthRepository
 
-## Cartas Wild
-- Podem ser jogadas independentemente da cor atual
-- o Jogador escolhe a nova carta através de um dialgo
-- A cor escolhida é aplicada à carta e exibida na interface
-- A proxima jogada deve respeitar essa cor
+## Lógica do Jogo
+- Implementada no GameViewmodel
+- Regras de UNO aplicadas de forma centralizada
+- Estado do jogo sincronizado via FireBase
 
-## Sincronização
-- Todas as alterações de estado são enviadas para o Firestore
-- Os clientes escutam atualizações em tempo real
+## Navgação
+- Jetpack Navigation Compose
+- Rotas centralizadas no NavGraph
 
 # Tecnologias Usadas
 - Kotolin
@@ -103,6 +149,7 @@ A lógica do jogo está concentrada na classe GameViewModel.
 - Sincronização de estado em tempo real sem conflitos
 - Garantir que ações como comprar cartas e jogar cartas fossem atómaticas
 - Criação de salas em que cria ids para os utilizadores poderem entrar
+- Gestão correta de turnos entre jogadores
 
 # Conclusões
 O desenvolvimento deste projeto permitiu aplicar conhecimentos práticos de desenvolvimento Android morderno, bem com conceitos de arquitetura, gestão de estado e jogos multijogador.
