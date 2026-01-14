@@ -6,7 +6,6 @@ A aplicação permite o registro e autenticação de utilizadores, criação e e
 
 # Estrutura do Projeto
 A estrutura do codigo foi organizada de forma modular para facilitar a manutenção e a escalabilidade:
-
 com.example.unogame
 │
 ├── models
